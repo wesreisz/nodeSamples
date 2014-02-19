@@ -11,3 +11,4 @@ var s = net.Server(function(socket){
 });
 
 s.listen(8000);
+console.log("chat client listening on port 8000");

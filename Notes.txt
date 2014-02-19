@@ -1,0 +1,74 @@
+Script:
+
+//discuss non blocking... doesn't stop
+setTimeout(function(){
+    console.log("world");
+},2000);
+console.log("hello");
+
+//compare to java
+out.println("hello");
+Thread.sleep(2000);
+out.println("world");
+
+setInterval(function(){
+    console.log("world");
+},2000);
+console.log("hello");
+
+//create a server
+var http = require('http');
+
+var s = http.createServer(function(req,res){
+   res.writeHead(200, {'context-type': 'text/plain'});
+   res.end('hello world');
+});
+
+s.listen(8000);
+//curl -v http://127.0.0.1:8000/
+
+
+//combine
+var http = require('http');
+
+var s = http.createServer(function(req,res){
+   res.writeHead(200, {'context-type': 'text/plain'});
+   res.write('hello\n');
+   setTimeout(function(){
+      res.end("world\n");
+   },2000);
+});
+
+s.listen(8000);
+console.log("Server running at http://127.0.0.1:8000/");
+//curl http://127.0.0.1:8000/
+//not blocked... can handle another connection
+//because of this it can handle more and more connections... 
+//performs extremely well under high concurrency
+//ab -n 100 -c 10 http://127.0.0.1:8000/
+
+
+//chat server let's write this...
+var net = require('net');
+var sockets = [];
+var s = net.Server(function(socket){
+   sockets.push(socket);
+
+   socket.on('data',function(d){
+     for(var i=0; i<sockets.length; i++){
+         if(sockets[i] == socket){
+            continue;
+         }
+         sockets[i].write(d);
+     }
+   });
+   socket.on('end',function(){
+     var i = sockets.indexOf(socket);
+     sockets.splice(i,1);
+   });
+});
+
+s.listen(8000);
+
+
+
