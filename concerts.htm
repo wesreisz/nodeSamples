@@ -1,0 +1,19 @@
+<html>
+	<head>
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script>
+		    $(document).ready(function(){
+			    console.log("here");
+			    //
+				$.ajax({
+				  url: "http://api.seatgeek.com/2/events?q=jason+mraz"
+				}).done(function( data ) {
+				   $("#divMsg").html(JSON.stringify(data));
+				});
+		    });
+		</script>
+	</head>	
+   <body>
+	   <div id="divMsg"></div>
+	</body>
+</html>
