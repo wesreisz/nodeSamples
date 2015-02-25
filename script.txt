@@ -7,3 +7,7 @@ Notes:
 -- node -v
 - REPL
 -- write simple functions
+
+Hello World
+-- setTimeout vs Thread.sleep
+---- Quick Discussion about how WebForms work
