@@ -1,6 +1,6 @@
 Notes:
 
-8790f64 step1 introduction to node.js
+step1 introduction to node.js
 - Installing node.js
 - Updating node.js
 -- node -v
@@ -10,12 +10,17 @@ Notes:
 - REPL
 -- write simple functions
 
-ef248f9 step2 setTimeout vs Threading
+step2 setTimeout vs Threading
 Step 2: Hello World
 -- setTimeout vs Thread.sleep
 ---- Quick Discussion about how WebForms work
 
-
 step 3 setInterval
+
+step 4 simple web server 
+-- curl -i http://127.0.0.1:8000/
+-- ab -n 100 -c 100  http://127.0.0.1:8000/
+
+
 
 
