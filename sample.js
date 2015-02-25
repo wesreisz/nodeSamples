@@ -13,6 +13,7 @@ var server = net.Server(function(socket){
          if(sockets[i] == socket){
             continue;
          }
+         if(socket==sockets[i]) continue;
          sockets[i].write( socket.remoteAddress + ": " + data);
      }
    });

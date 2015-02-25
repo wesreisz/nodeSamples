@@ -25,6 +25,8 @@ step 5 simple tcp/ip server
 
 step 6 simple tcp/ip chat server
 
+step 6a remove echo to self
+
 
 
 
