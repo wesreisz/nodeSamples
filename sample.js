@@ -1,18 +1,18 @@
-//Step 4
-// Load the http module to create an http server.
-var http = require('http');
+//Step 5
+var net = require('net')
+var port = 8000;
 
-// Configure our HTTP server to respond with Hello World to all requests.
-var server = http.createServer(function (request, response) {
-  response.writeHead(200, {"Content-Type": "text/plain"});
-  response.write("Hello\n");
-  setInterval(function(){
-  	response.end("World\n");
-  },2000)
+var server = net.createServer(function(socket){
+   socket.write("hello class\n");
+   socket.on('data',function(data) {
+	  console.log("rcvd (" + socket.remoteAddress + "): " + data)
+      socket.write("echo: " + data);
+   });
 });
 
-// Listen on port 8000, IP defaults to 127.0.0.1
-server.listen(8000);
+server.listen(port);
 
 // Put a friendly message on the terminal
-console.log("Server running at http://127.0.0.1:8000/");
+require('dns').lookup(require('os').hostname(), function (err, add, fam) {
+  console.log('Server running at: ' + add + " " + port);
+})
