@@ -1,0 +1,9 @@
+Notes:
+- Installing node.js
+- Updating node.js
+-- node -v
+-- sudo npm install -g n
+---sudo n stable
+-- node -v
+- REPL
+-- write simple functions
