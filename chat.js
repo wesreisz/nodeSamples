@@ -5,6 +5,7 @@ var s = net.Server(function(socket){
 
    socket.on('data',function(d){
      for(var i=0; i<sockets.length; i++){
+     	 console.log(d);
          sockets[i].write(d);
      }
    });
